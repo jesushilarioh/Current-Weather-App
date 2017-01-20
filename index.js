@@ -2,6 +2,7 @@ var ourRequest = new XMLHttpRequest(); // Create a new instance
 var cityContainer = document.getElementById('city');
 var conditionContainer = document.getElementById('condition');
 var tempContainer = document.getElementById('temp');
+var iconContainer = document.getElementById('icon');
 
 // GET request from ip-api
 ourRequest.open('GET', 'http://ip-api.com/json');
@@ -24,15 +25,14 @@ ourRequest.onload = function() {
         var weatherData = JSON.parse(weatherRequest.responseText);
         var condition = weatherData.weather[0].main;
         var temp = weatherData.main.temp;
-        console.log("The condition is " + condition + ".");
+        var icon = weatherData.wind.speed;
+        temp = ((temp-273) * (9/5) + 32).toFixed(1);
         renderHTMLCondition(condition);
-        console.log("The temperature is " + temp + " kelvin.");
         renderHTMLTemp(temp);
+        renderHTMLIcon(icon);
     };
     // Send GET request to open weather map
     weatherRequest.send();
-
-    console.log("I live in " + city + ".");
     renderHTMLCity(city);
 };
 // Send GET request to ip-api
@@ -53,4 +53,9 @@ function renderHTMLTemp(data) {
     var htmlString = " ";
     htmlString += data;
     tempContainer.insertAdjacentHTML('beforeend', htmlString);
+}
+function renderHTMLIcon(data) {
+    var htmlString = " ";
+    htmlString += "Wind speed is " + data + " mph.";
+    iconContainer.insertAdjacentHTML('beforeend', htmlString);
 }

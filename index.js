@@ -1,42 +1,41 @@
-var ourRequest = new XMLHttpRequest(); // Create a new instance
+var request = new XMLHttpRequest(); // Create a new instance
 var cityContainer = document.getElementById('city');
 var conditionContainer = document.getElementById('condition');
 var tempContainer = document.getElementById('temp');
-var iconContainer = document.getElementById('icon');
+var windContainer = document.getElementById('wind');
 
 // GET request from ip-api
-ourRequest.open('GET', 'http://ip-api.com/json');
+request.open('GET', 'http://ip-api.com/json');
 
 // Function to load on initial page load
-ourRequest.onload = function() {
+request.onload = function() {
     // Local variables
-    var ourData = JSON.parse(ourRequest.responseText);
+    var ourData = JSON.parse(request.responseText);
     var lat = ourData.lat;
     var lon = ourData.lon;
     var city = ourData.city;
-    var weatherRequest = new XMLHttpRequest(); // Create another instance
 
     // GET request from open weather map
-    weatherRequest.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=f62651bb11bb663233a4e55634a22266');
+    request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=f62651bb11bb663233a4e55634a22266');
 
     // Function to load on initial page load
-    weatherRequest.onload = function(){
+    request.onload = function(){
         // Local variable
-        var weatherData = JSON.parse(weatherRequest.responseText);
+        var weatherData = JSON.parse(request.responseText);
         var condition = weatherData.weather[0].main;
         var temp = weatherData.main.temp;
-        var icon = weatherData.wind.speed;
+        var wind = weatherData.wind.speed;
         temp = ((temp-273) * (9/5) + 32).toFixed(1);
         renderHTMLCondition(condition);
         renderHTMLTemp(temp);
-        renderHTMLIcon(icon);
+        renderHTMLIcon(wind);
     };
     // Send GET request to open weather map
-    weatherRequest.send();
+    request.send();
     renderHTMLCity(city);
 };
 // Send GET request to ip-api
-ourRequest.send();
+request.send();
 
 // Render HTML
 function renderHTMLCity(data) {
@@ -57,5 +56,5 @@ function renderHTMLTemp(data) {
 function renderHTMLIcon(data) {
     var htmlString = " ";
     htmlString += "Wind speed is " + data + " mph.";
-    iconContainer.insertAdjacentHTML('beforeend', htmlString);
+    windContainer.insertAdjacentHTML('beforeend', htmlString);
 }

@@ -26,6 +26,7 @@ request.onload = function() {
         var temp = weatherData.main.temp;
         var wind = weatherData.wind.speed;
         temp = ((temp-273) * (9/5) + 32).toFixed(1);
+
         renderHTML(conditionContainer, condition);
         renderHTML(tempContainer, temp);
         renderHTML(windContainer, wind);
@@ -36,6 +37,12 @@ request.onload = function() {
 };
 // Send GET request to ip-api
 request.send();
+
+document.getElementById("CtoF").addEventListener("click", myFunction);
+
+function myFunction() {
+  console.log(document.getElementById('temp'));
+}
 
 // Render HTML
 function renderHTML(info, data) {

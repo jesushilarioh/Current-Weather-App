@@ -26,23 +26,13 @@ request.onload = function() {
         var temp = weatherData.main.temp;
         var wind = weatherData.wind.speed;
         temp = ((temp-273) * (9/5) + 32).toFixed(1);
-<<<<<<< HEAD
         renderHTML(conditionContainer, condition);
         renderHTML(tempContainer, temp);
-        renderHTML(iconContainer, icon);
+        renderHTML(windContainer, wind);
     };
     // Send GET request to open weather map
     request.send();
     renderHTML(cityContainer, city);
-=======
-        renderHTMLCondition(condition);
-        renderHTMLTemp(temp);
-        renderHTMLIcon(wind);
-    };
-    // Send GET request to open weather map
-    request.send();
-    renderHTMLCity(city);
->>>>>>> 87da9544b0ffb913314b503b291da2fd3bf5e236
 };
 // Send GET request to ip-api
 request.send();
@@ -51,29 +41,10 @@ request.send();
 function renderHTML(info, data) {
     var htmlString = " ";
     htmlString += data;
-<<<<<<< HEAD
 
     if (info === conditionContainer || info === tempContainer || info === cityContainer) {
       info.insertAdjacentHTML('beforeend', htmlString);
     } else {
       info.insertAdjacentHTML('beforeend', "The winds speed is " + htmlString + " mph.")
     }
-=======
-    cityContainer.insertAdjacentHTML('beforeend', htmlString);
-}
-function renderHTMLCondition(data) {
-    var htmlString = " ";
-    htmlString += data;
-    conditionContainer.insertAdjacentHTML('beforeend', htmlString);
-}
-function renderHTMLTemp(data) {
-    var htmlString = " ";
-    htmlString += data;
-    tempContainer.insertAdjacentHTML('beforeend', htmlString);
-}
-function renderHTMLIcon(data) {
-    var htmlString = " ";
-    htmlString += "Wind speed is " + data + " mph.";
-    windContainer.insertAdjacentHTML('beforeend', htmlString);
->>>>>>> 87da9544b0ffb913314b503b291da2fd3bf5e236
 }

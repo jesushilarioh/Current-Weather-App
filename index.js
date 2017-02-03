@@ -34,20 +34,20 @@ request.onload = function() {
         renderHTML(tempContainer, temp1);
         renderHTML(windContainer, wind);
 
-        C2FButton.addEventListener("click", myFunction);
+        C2FButton.addEventListener("click", convertTemp);
 
-        function myFunction() {
+        function convertTemp() {
 
           if (tempChange != "fahrenheit") {
             tempContainer.innerHTML = temp2;
             console.log('Hello');
             tempChange = 'fahrenheit';
-
           } else {
             tempContainer.innerHTML = temp1;
             tempChange = "celsius";
             console.log('Goodbye');
           }
+
         }
 
     };
@@ -66,6 +66,6 @@ function renderHTML(info, data) {
     if (info === conditionContainer || info === tempContainer || info === cityContainer) {
       info.innerHTML = htmlString;
     } else {
-      info.innerHTML = "The winds speed is " + htmlString + " mph.";
+      info.innerHTML = "Wind speed " + htmlString + " mph.";
     }
 }

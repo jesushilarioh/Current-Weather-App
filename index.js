@@ -25,11 +25,20 @@ request.onload = function() {
         var condition = weatherData.weather[0].main;
         var temp = weatherData.main.temp;
         var wind = weatherData.wind.speed;
-        temp = ((temp-273) * (9/5) + 32).toFixed(1);
+        var temp1 = ((temp-273) * (9/5) + 32).toFixed(1);
+        var temp2 = (temp - 273.15).toFixed(1);
 
         renderHTML(conditionContainer, condition);
-        renderHTML(tempContainer, temp);
+        renderHTML(tempContainer, temp1);
         renderHTML(windContainer, wind);
+
+        document.getElementById("CtoF").addEventListener("click", myFunction);
+
+        function myFunction() {
+          console.log(temp1);
+          console.log(temp2);
+        }
+
     };
     // Send GET request to open weather map
     request.send();
@@ -37,12 +46,6 @@ request.onload = function() {
 };
 // Send GET request to ip-api
 request.send();
-
-document.getElementById("CtoF").addEventListener("click", myFunction);
-
-function myFunction() {
-  console.log(document.getElementById('temp'));
-}
 
 // Render HTML
 function renderHTML(info, data) {

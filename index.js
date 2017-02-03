@@ -3,6 +3,8 @@ var cityContainer = document.getElementById('city');
 var conditionContainer = document.getElementById('condition');
 var tempContainer = document.getElementById('temp');
 var windContainer = document.getElementById('wind');
+var C2FButton = document.getElementById("CtoF");
+var tempChange = document.getElementsByClassName('fahrenheit');
 
 // GET request from ip-api
 request.open('GET', 'http://ip-api.com/json');
@@ -32,12 +34,20 @@ request.onload = function() {
         renderHTML(tempContainer, temp1);
         renderHTML(windContainer, wind);
 
-        document.getElementById("CtoF").addEventListener("click", myFunction);
+        C2FButton.addEventListener("click", myFunction);
 
         function myFunction() {
-          tempContainer.innerHTML = temp2;
-          console.log(temp1);
-          console.log(temp2);
+
+          if (tempChange != "fahrenheit") {
+            tempContainer.innerHTML = temp2;
+            console.log('Hello');
+            tempChange = 'fahrenheit';
+
+          } else {
+            tempContainer.innerHTML = temp1;
+            tempChange = "celsius";
+            console.log('Goodbye');
+          }
         }
 
     };

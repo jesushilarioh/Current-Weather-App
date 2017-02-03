@@ -35,6 +35,7 @@ request.onload = function() {
         document.getElementById("CtoF").addEventListener("click", myFunction);
 
         function myFunction() {
+          tempContainer.innerHTML = temp2;
           console.log(temp1);
           console.log(temp2);
         }
@@ -53,8 +54,8 @@ function renderHTML(info, data) {
     htmlString += data;
 
     if (info === conditionContainer || info === tempContainer || info === cityContainer) {
-      info.insertAdjacentHTML('beforeend', htmlString);
+      info.innerHTML = htmlString;
     } else {
-      info.insertAdjacentHTML('beforeend', "The winds speed is " + htmlString + " mph.")
+      info.innerHTML = "The winds speed is " + htmlString + " mph.";
     }
 }

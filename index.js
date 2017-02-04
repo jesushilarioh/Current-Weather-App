@@ -88,6 +88,9 @@
         case windContainer:
           info.innerHTML = "Wind speed " + htmlString + " mph.";
           break;
+        default:
+          console.log("no work");
+          break;
       }
   }
 

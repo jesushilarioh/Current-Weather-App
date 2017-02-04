@@ -1,11 +1,12 @@
 (function() {
   // Global Variables
-  var request = new XMLHttpRequest(); // Create a new instance
-  var cityContainer = document.getElementById('city');
-  var conditionContainer = document.getElementById('condition');
-  var tempContainer = document.getElementById('temp');
-  var windContainer = document.getElementById('wind');
-  var C2FButton = document.getElementById("CtoF");
+  const request = new XMLHttpRequest(), // Create a new instance
+        cityContainer = document.getElementById('city'),
+        countryContainer = document.getElementById('country'),
+        conditionContainer = document.getElementById('condition'),
+        tempContainer = document.getElementById('temp'),
+        windContainer = document.getElementById('wind'),
+        C2FButton = document.getElementById("CtoF");
   var tempChange = document.getElementsByClassName('fahrenheit');
 
   // GET request from ip-api
@@ -14,10 +15,11 @@
   // Function to load on initial page load
   request.onload = function() {
       // Local Constant Variables (LCVs)
-      const ourData = JSON.parse(request.responseText);
-      const lat = ourData.lat;
-      const lon = ourData.lon;
-      const city = ourData.city;
+      const ourData = JSON.parse(request.responseText),
+            lat = ourData.lat,
+            lon = ourData.lon,
+            city = ourData.city + ", " + ourData.region,
+            country = ourData.country;
 
       // GET request from open weather map
       request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=f62651bb11bb663233a4e55634a22266');
@@ -25,12 +27,12 @@
       // Function to load on initial page load
       request.onload = function(){
           // Local variable
-          var weatherData = JSON.parse(request.responseText);
-          var condition = weatherData.weather[0].main;
-          var temp = weatherData.main.temp;
-          var wind = weatherData.wind.speed;
-          var temp1 = ((temp-273) * (9/5) + 32).toFixed(1);
-          var temp2 = (temp - 273.15).toFixed(1);
+          const weatherData = JSON.parse(request.responseText),
+                condition = weatherData.weather[0].main,
+                temp = weatherData.main.temp,
+                wind = weatherData.wind.speed,
+                temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
+                temp2 = (temp - 273.15).toFixed(1);
 
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
@@ -59,6 +61,7 @@
       // Send GET request to open weather map
       request.send();
       renderHTML(cityContainer, city);
+      renderHTML(countryContainer, country);
   };
 
   // Send GET request to ip-api
@@ -66,7 +69,7 @@
 
   // renderHTML function called in lines 34 - 36;
   function renderHTML(info, data) {
-      var htmlString = " ";
+      let htmlString = " ";
       htmlString += data;
 
       switch (info) {
@@ -75,6 +78,9 @@
           break;
         case tempContainer:
           info.innerHTML = htmlString + " F";
+          break;
+        case countryContainer:
+          info.innerHTML = htmlString;
           break;
         case cityContainer:
           info.innerHTML = htmlString;

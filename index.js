@@ -4,7 +4,7 @@
         cityContainer = document.getElementById('city'),
         countryContainer = document.getElementById('country'),
         conditionContainer = document.getElementById('condition'),
-        conditionDescriptionContainer =document.getElementById('conditionDescription'),
+        icon = document.getElementById('conditionDescription'),
         tempContainer = document.getElementById('temp'),
         windContainer = document.getElementById('wind'),
         C2FButton = document.getElementById("CtoF");
@@ -29,17 +29,16 @@
       request.onload = function(){
           // Local variable
           const weatherData = JSON.parse(request.responseText),
-                condition = weatherData.weather[0].main,
-                conditionDescription = weatherData.weather[0].description,
+                condition = weatherData.weather,
+                conditionDescription = "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + ".png",
                 temp = weatherData.main.temp,
                 wind = weatherData.wind.speed,
                 temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
                 temp2 = (temp - 273.15).toFixed(1);
 
-
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
-          renderHTML(conditionDescriptionContainer, conditionDescription);
+          renderHTML(icon, conditionDescription);
           renderHTML(tempContainer, temp1);
           renderHTML(windContainer, wind);
 
@@ -73,15 +72,19 @@
 
   // renderHTML function called in lines 34 - 36;
   function renderHTML(info, data) {
-      let htmlString = " ";
+      let htmlString = "";
       htmlString += data;
 
       switch (info) {
         case conditionContainer:
-          info.innerHTML = htmlString;
+
+          for (var i = 0; i < data.length; i++) {
+              console.log(data[i].main);
+              info.innerHTML += data[i].main + " ";
+          }
           break;
-        case conditionDescriptionContainer:
-          info.innerHTML = htmlString;
+        case icon:
+          info.src = data;
           break;
         case tempContainer:
           info.innerHTML = htmlString + " F";
@@ -101,10 +104,5 @@
       }
   }
 
-  function weatherLoop(data) {
-    for (var i = 0; i < data.length; i++) {
-      console.log()
-    }
-  }
 
 }());

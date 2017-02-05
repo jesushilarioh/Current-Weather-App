@@ -2,7 +2,3 @@ body {
     background-color: rgb(43, 43, 45);
     color: white;
 }
-
-#conditionDescription {
-  text-transform: capitalize;
-}

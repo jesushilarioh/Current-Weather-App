@@ -4,6 +4,7 @@
         cityContainer = document.getElementById('city'),
         countryContainer = document.getElementById('country'),
         conditionContainer = document.getElementById('condition'),
+        conditionDescriptionContainer =document.getElementById('conditionDescription'),
         tempContainer = document.getElementById('temp'),
         windContainer = document.getElementById('wind'),
         C2FButton = document.getElementById("CtoF");
@@ -29,13 +30,16 @@
           // Local variable
           const weatherData = JSON.parse(request.responseText),
                 condition = weatherData.weather[0].main,
+                conditionDescription = weatherData.weather[0].description,
                 temp = weatherData.main.temp,
                 wind = weatherData.wind.speed,
                 temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
                 temp2 = (temp - 273.15).toFixed(1);
 
+
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
+          renderHTML(conditionDescriptionContainer, conditionDescription);
           renderHTML(tempContainer, temp1);
           renderHTML(windContainer, wind);
 
@@ -48,12 +52,12 @@
             // if / else statement used to convert temperature
             if (tempChange != "fahrenheit") {
               tempContainer.innerHTML = temp2 + " C";
-              console.log('Hello');
+              console.log('Celsius');
               tempChange = 'fahrenheit';
             } else {
               tempContainer.innerHTML = temp1 + " F";
               tempChange = "celsius";
-              console.log('Goodbye');
+              console.log('Fahrenheit');
             }
           }
       };
@@ -76,6 +80,9 @@
         case conditionContainer:
           info.innerHTML = htmlString;
           break;
+        case conditionDescriptionContainer:
+          info.innerHTML = htmlString;
+          break;
         case tempContainer:
           info.innerHTML = htmlString + " F";
           break;
@@ -92,6 +99,12 @@
           console.log("no work");
           break;
       }
+  }
+
+  function weatherLoop(data) {
+    for (var i = 0; i < data.length; i++) {
+      console.log()
+    }
   }
 
 }());

@@ -7,8 +7,12 @@
         icon = document.getElementById('conditionDescription'),
         tempContainer = document.getElementById('temp'),
         windContainer = document.getElementById('wind'),
-        C2FButton = document.getElementById("CtoF");
+        C2FButton = document.getElementById("CtoF"),
+        imgList = document.getElementById('imgList');
+        // newImg = document.createTextNode("hello");
   var tempChange = document.getElementsByClassName('fahrenheit');
+
+        // imgList.appendChild(newImg);
 
   // GET request from ip-api
   request.open('GET', 'http://ip-api.com/json');
@@ -35,6 +39,12 @@
                 wind = weatherData.wind.speed,
                 temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
                 temp2 = (temp - 273.15).toFixed(1);
+
+            for (var i = 0; i < condition.length; i++) {
+                let imgNode = document.createElement("IMG");
+                imgList.appendChild(imgNode);
+                console.log("http://openweathermap.org/img/w/" + condition[i].icon + ".png")
+            }
 
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
@@ -82,6 +92,7 @@
               console.log(data[i].main);
               info.innerHTML += data[i].main + " ";
           }
+
           break;
         case icon:
           info.src = data;

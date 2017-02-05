@@ -44,7 +44,10 @@
                 let imgNode = document.createElement("IMG");
                 imgList.appendChild(imgNode);
                 console.log("http://openweathermap.org/img/w/" + condition[i].icon + ".png")
+                
             }
+            imgList.children[0].setAttribute("id", 1);
+            console.log(imgList.children[0]);
 
           // Display info onto index.html
           renderHTML(conditionContainer, condition);

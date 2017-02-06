@@ -4,15 +4,11 @@
         cityContainer = document.getElementById('city'),
         countryContainer = document.getElementById('country'),
         conditionContainer = document.getElementById('condition'),
-        icon = document.getElementById('conditionDescription'),
         tempContainer = document.getElementById('temp'),
         windContainer = document.getElementById('wind'),
         C2FButton = document.getElementById("CtoF"),
         imgList = document.getElementById('imgList');
-        // newImg = document.createTextNode("hello");
   var tempChange = document.getElementsByClassName('fahrenheit');
-
-        // imgList.appendChild(newImg);
 
   // GET request from ip-api
   request.open('GET', 'http://ip-api.com/json');
@@ -34,7 +30,6 @@
           // Local variable
           const weatherData = JSON.parse(request.responseText),
                 condition = weatherData.weather,
-                conditionDescription = "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + ".png",
                 temp = weatherData.main.temp,
                 wind = weatherData.wind.speed,
                 temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
@@ -43,36 +38,31 @@
             for (var i = 0; i < condition.length; i++) {
                 let imgNode = document.createElement("IMG");
                 imgList.appendChild(imgNode);
-                console.log("http://openweathermap.org/img/w/" + condition[i].icon + ".png")
+                console.log("http://openweathermap.org/img/w/" + condition[i].icon + ".png");
                 imgList.children[i].setAttribute("id", "img" + i);
                 imgList.children[i].src = "http://openweathermap.org/img/w/" + condition[i].icon + ".png";
                 console.log(imgList.children[i].src);
+                console.log(imgList);
             }
-
 
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
-          renderHTML(icon, conditionDescription);
           renderHTML(tempContainer, temp1);
           renderHTML(windContainer, wind);
 
           // add click event that convets C to F and F to C
-          C2FButton.addEventListener("click", convertTemp);
+          C2FButton.addEventListener("click", function() {
 
-          // Function used for click event
-          function convertTemp() {
+              // if / else statement used to convert temperature
+              if (tempChange != "fahrenheit") {
+                tempContainer.innerHTML = temp2 + " C";
+                tempChange = 'fahrenheit';
+              } else {
+                tempContainer.innerHTML = temp1 + " F";
+                tempChange = "celsius";
+              }
+          });
 
-            // if / else statement used to convert temperature
-            if (tempChange != "fahrenheit") {
-              tempContainer.innerHTML = temp2 + " C";
-              console.log('Celsius');
-              tempChange = 'fahrenheit';
-            } else {
-              tempContainer.innerHTML = temp1 + " F";
-              tempChange = "celsius";
-              console.log('Fahrenheit');
-            }
-          }
       };
 
       // Send GET request to open weather map
@@ -98,9 +88,6 @@
           }
 
           break;
-        case icon:
-          info.src = data;
-          break;
         case tempContainer:
           info.innerHTML = htmlString + " F";
           break;
@@ -118,6 +105,5 @@
           break;
       }
   }
-
 
 }());

@@ -4,6 +4,7 @@
         tempContainer = document.getElementById('temp'),
         cityContainer = document.getElementById('city'),
         conditionContainer = document.getElementById('condition'),
+        conditionDesContainer = document.getElementById('conditionDescription'),
         countryContainer = document.getElementById('country'),
         windContainer = document.getElementById('wind');
 
@@ -37,6 +38,7 @@
 
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
+          renderHTML(conditionDesContainer, condition);
           renderHTML(tempContainer, temp1);
           renderHTML(windContainer, wind);
           renderHTML(imgList, condition);
@@ -77,6 +79,12 @@
         case conditionContainer:
           for (var i = 0; i < data.length; i++) {
               info.innerHTML += data[i].main + " ";
+          }
+          break;
+        // write each weather condition to #conditionDescription selement
+        case conditionDesContainer:
+          for (var i = 0; i < data.length; i++) {
+              info.innerHTML += data[i].description + " ";
           }
           break;
         // write to element with #temp id

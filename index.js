@@ -35,20 +35,11 @@
                 temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
                 temp2 = (temp - 273.15).toFixed(1);
 
-            for (var i = 0; i < condition.length; i++) {
-                let imgNode = document.createElement("IMG");
-                imgList.appendChild(imgNode);
-                console.log("http://openweathermap.org/img/w/" + condition[i].icon + ".png");
-                imgList.children[i].setAttribute("id", "img" + i);
-                imgList.children[i].src = "http://openweathermap.org/img/w/" + condition[i].icon + ".png";
-                console.log(imgList.children[i].src);
-                console.log(imgList);
-            }
-
           // Display info onto index.html
           renderHTML(conditionContainer, condition);
           renderHTML(tempContainer, temp1);
           renderHTML(windContainer, wind);
+          renderHTML(imgList, condition);
 
           // add click event that convets C to F and F to C
           C2FButton.addEventListener("click", function() {
@@ -67,6 +58,8 @@
 
       // Send GET request to open weather map
       request.send();
+
+      // Display info onto index.html
       renderHTML(cityContainer, city);
       renderHTML(countryContainer, country);
   };
@@ -80,25 +73,40 @@
       htmlString += data;
 
       switch (info) {
+        // write each weather condition to #condition element
         case conditionContainer:
-
           for (var i = 0; i < data.length; i++) {
-              console.log(data[i].main);
               info.innerHTML += data[i].main + " ";
           }
-
           break;
+        // write to element with #temp id
         case tempContainer:
           info.innerHTML = htmlString + " F";
           break;
+        // write to element with #country id
         case countryContainer:
           info.innerHTML = htmlString;
           break;
+        // write to element with #city id
         case cityContainer:
           info.innerHTML = htmlString;
           break;
+        // write to element with #wind id
         case windContainer:
           info.innerHTML = "Wind speed " + htmlString + " mph.";
+          break;
+        // Write to element with #imgList id
+        case imgList:
+        // Create an img element for each weather condition
+        for (var i = 0; i < data.length; i++) {
+            let imgNode = document.createElement("IMG");
+            info.appendChild(imgNode);
+            // console.log("http://openweathermap.org/img/w/" + data[i].icon + ".png");
+            info.children[i].setAttribute("id", "img" + i);
+            info.children[i].src = "http://openweathermap.org/img/w/" + data[i].icon + ".png";
+            // console.log(imgList.children[i].src);
+            // console.log(imgList);
+        }
           break;
         default:
           console.log("no work");

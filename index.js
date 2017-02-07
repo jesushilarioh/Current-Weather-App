@@ -97,19 +97,16 @@
           break;
         // Write to element with #imgList id
         case imgList:
-        // Create an img element for each weather condition
         for (var i = 0; i < data.length; i++) {
             let imgNode = document.createElement("IMG");
             info.appendChild(imgNode);
-            // console.log("http://openweathermap.org/img/w/" + data[i].icon + ".png");
             info.children[i].setAttribute("id", "img" + i);
             info.children[i].src = "http://openweathermap.org/img/w/" + data[i].icon + ".png";
-            // console.log(imgList.children[i].src);
-            // console.log(imgList);
         }
           break;
+        // In case there is an error upon loading.
         default:
-          console.log("no work");
+          document.write("I'm sorry, an error has occured.");
           break;
       }
   }

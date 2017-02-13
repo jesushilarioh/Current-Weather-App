@@ -2,6 +2,7 @@
   // Global Variables
   const request = new XMLHttpRequest(), // Create a new instance
         tempContainer = document.getElementById('temp'),
+     		imgList = document.getElementById('imgList'),
         cityContainer = document.getElementById('city'),
         conditionContainer = document.getElementById('condition'),
         conditionDesContainer = document.getElementById('conditionDescription'),
@@ -28,7 +29,6 @@
           // Local variable
           const weatherData = JSON.parse(request.responseText),
                 C2FButton = document.getElementById("CtoF"),
-                imgList = document.getElementById('imgList'),
                 condition = weatherData.weather,
                 temp = weatherData.main.temp,
                 wind = weatherData.wind.speed,
@@ -83,7 +83,7 @@
           break;
         // write each weather condition to #conditionDescription selement
         case conditionDesContainer:
-          for (var i = 0; i < data.length; i++) {
+          for (i = 0; i < data.length; i++) {
               info.innerHTML += data[i].description + " ";
           }
           break;
@@ -105,7 +105,7 @@
           break;
         // Write to element with #imgList id
         case imgList:
-          for (var i = 0; i < data.length; i++) {
+          for (i = 0; i < data.length; i++) {
             let imgNode = document.createElement("IMG");
             info.appendChild(imgNode);
             info.children[i].setAttribute("id", "img" + i);

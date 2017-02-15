@@ -1,123 +1,123 @@
 (function() {
-  // Global Variables
-  const request = new XMLHttpRequest(), // Create a new instance
+    // Global Variables
+    const request = new XMLHttpRequest(), // Create a new instance
         tempContainer = document.getElementById('temp'),
-     		imgList = document.getElementById('imgList'),
+        imgList = document.getElementById('imgList'),
         cityContainer = document.getElementById('city'),
         conditionContainer = document.getElementById('condition'),
         conditionDesContainer = document.getElementById('conditionDescription'),
         countryContainer = document.getElementById('country'),
         windContainer = document.getElementById('wind');
 
-  // GET request from ip-api
-  request.open('GET', 'http://ip-api.com/json');
+    // GET request from ip-api
+    request.open('GET', 'http://ip-api.com/json');
 
-  // Function to load on initial page load
-  request.onload = function() {
-      // Local Constant Variables (LCVs)
-      const ourData = JSON.parse(request.responseText),
+    // Function to load on initial page load
+    request.onload = function() {
+        // Local Constant Variables (LCVs)
+        const ourData = JSON.parse(request.responseText),
             lat = ourData.lat,
             lon = ourData.lon,
             city = ourData.city + ", " + ourData.region,
             country = ourData.country;
 
-      // GET request from open weather map
-      request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=f62651bb11bb663233a4e55634a22266');
+        // GET request from open weather map
+        request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=f62651bb11bb663233a4e55634a22266');
 
-      // Function to load on initial page load
-      request.onload = function(){
-          // Local variable
-          const weatherData = JSON.parse(request.responseText),
+        // Function to load on initial page load
+        request.onload = function() {
+            // Local variable
+            const weatherData = JSON.parse(request.responseText),
                 C2FButton = document.getElementById("CtoF"),
                 condition = weatherData.weather,
                 temp = weatherData.main.temp,
                 wind = weatherData.wind.speed,
-                temp1 = ((temp-273) * (9/5) + 32).toFixed(1),
+                temp1 = ((temp - 273) * (9 / 5) + 32).toFixed(1),
                 temp2 = (temp - 273.15).toFixed(1);
             var tempChange = document.getElementsByClassName('fahrenheit');
 
-          // Display info onto index.html
-          renderHTML(conditionContainer, condition);
-          renderHTML(conditionDesContainer, condition);
-          renderHTML(tempContainer, temp1);
-          renderHTML(windContainer, wind);
-          renderHTML(imgList, condition);
+            // Display info onto index.html
+            renderHTML(conditionContainer, condition);
+            renderHTML(conditionDesContainer, condition);
+            renderHTML(tempContainer, temp1);
+            renderHTML(windContainer, wind);
+            renderHTML(imgList, condition);
 
-          // add click event that convets C to F and F to C
-          C2FButton.addEventListener("click", function() {
+            // add click event that convets C to F and F to C
+            C2FButton.addEventListener("click", function() {
 
-              // if / else statement used to convert temperature
-              if (tempChange != "fahrenheit") {
-                tempContainer.innerHTML = temp2 + " C";
-                tempChange = 'fahrenheit';
-              } else {
-                tempContainer.innerHTML = temp1 + " F";
-                tempChange = "celsius";
-              }
-          });
+                // if / else statement used to convert temperature
+                if (tempChange != "fahrenheit") {
+                    tempContainer.innerHTML = temp2 + " C";
+                    tempChange = 'fahrenheit';
+                } else {
+                    tempContainer.innerHTML = temp1 + " F";
+                    tempChange = "celsius";
+                }
+            });
 
-      };
+        };
 
-      // Send GET request to open weather map
-      request.send();
+        // Send GET request to open weather map
+        request.send();
 
-      // Display info onto index.html
-      renderHTML(cityContainer, city);
-      renderHTML(countryContainer, country);
-  };
+        // Display info onto index.html
+        renderHTML(cityContainer, city);
+        renderHTML(countryContainer, country);
+    };
 
-  // Send GET request to ip-api
-  request.send();
+    // Send GET request to ip-api
+    request.send();
 
-  // renderHTML function called in lines 34 - 36;
-  function renderHTML(info, data) {
-      let htmlString = "";
-      htmlString += data;
+    // renderHTML function called in lines 34 - 36;
+    function renderHTML(info, data) {
+        let htmlString = "";
+        htmlString += data;
 
-      switch (info) {
-        // write each weather condition to #condition element
-        case conditionContainer:
-          for (var i = 0; i < data.length; i++) {
-              info.innerHTML += data[i].main + " ";
-          }
-          break;
-        // write each weather condition to #conditionDescription selement
-        case conditionDesContainer:
-          for (i = 0; i < data.length; i++) {
-              info.innerHTML += data[i].description + " ";
-          }
-          break;
-        // write to element with #temp id
-        case tempContainer:
-          info.innerHTML = htmlString + " F";
-          break;
-        // write to element with #country id
-        case countryContainer:
-          info.innerHTML = htmlString;
-          break;
-        // write to element with #city id
-        case cityContainer:
-          info.innerHTML = htmlString;
-          break;
-        // write to element with #wind id
-        case windContainer:
-          info.innerHTML = "Wind speed " + htmlString + " mph.";
-          break;
-        // Write to element with #imgList id
-        case imgList:
-          for (i = 0; i < data.length; i++) {
-            let imgNode = document.createElement("IMG");
-            info.appendChild(imgNode);
-            info.children[i].setAttribute("id", "img" + i);
-            info.children[i].src = "http://openweathermap.org/img/w/" + data[i].icon + ".png";
-          }
-          break;
-        // In case there is an error upon loading.
-        default:
-          document.write("I'm sorry, an error has occured.");
-          break;
-      }
-  }
+        switch (info) {
+            // write each weather condition to #condition element
+            case conditionContainer:
+                for (var i = 0; i < data.length; i++) {
+                    info.innerHTML += data[i].main + " ";
+                }
+                break;
+                // write each weather condition to #conditionDescription selement
+            case conditionDesContainer:
+                for (i = 0; i < data.length; i++) {
+                    info.innerHTML += data[i].description + " ";
+                }
+                break;
+                // write to element with #temp id
+            case tempContainer:
+                info.innerHTML = htmlString + " F";
+                break;
+                // write to element with #country id
+            case countryContainer:
+                info.innerHTML = htmlString;
+                break;
+                // write to element with #city id
+            case cityContainer:
+                info.innerHTML = htmlString;
+                break;
+                // write to element with #wind id
+            case windContainer:
+                info.innerHTML = "Wind speed " + htmlString + " mph.";
+                break;
+                // Write to element with #imgList id
+            case imgList:
+                for (i = 0; i < data.length; i++) {
+                    let imgNode = document.createElement("IMG");
+                    info.appendChild(imgNode);
+                    info.children[i].setAttribute("id", "img" + i);
+                    info.children[i].src = "http://openweathermap.org/img/w/" + data[i].icon + ".png";
+                }
+                break;
+                // In case there is an error upon loading.
+            default:
+                document.write("I'm sorry, an error has occured.");
+                break;
+        }
+    }
 
 }());
 // http://api.openweathermap.org/data/2.5/weather?lat=27.7693&lon=-97.444&APPID=f62651bb11bb663233a4e55634a22266

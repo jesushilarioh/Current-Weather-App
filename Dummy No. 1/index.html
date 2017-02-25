@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Weather App</title>
+
+
+        <!-- Bootstrap CSS-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter|Trade+Winds|Cabin+Sketch|Grand+Hotel' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="index.css">
+
+    </head>
+
+    <body>
+
+        <!-- main -->
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col-sm-12" id="title">Local Weather For:</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 location details" id="city"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" id="CandF">
+                    <button type="button" class="btn btn-primary btn-xl" data-toggle="button" aria-pressed="false" autocomplete="off" id="fTemp">C/F</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" id="windSpeed"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" id="weatherType"></div>
+            </div>
+        </div><!-- /main -->
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Boostrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+
+    </body>
+
+</html>

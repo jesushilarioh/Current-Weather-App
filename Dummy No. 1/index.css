@@ -1,0 +1,37 @@
+body{
+    padding-top: 30px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+}
+
+#title{
+  font-size: 34px;
+  margin:  25px;
+  text-shadow: .5px .5px 1px white;
+}
+#city{
+  font-size: 54px;
+  font-family: 'Architects Daughter', cursive;
+  text-shadow: 2px 3px 15px white;
+}
+#fTemp{
+  font-size: 65px;
+   padding: 20px;
+  margin: 25px;
+  text-shadow:  2px 3px 8px black;
+  font-family: 'Grand Hotel', cursive;
+}
+#windSpeed{
+  font-size: 45px;
+  margin: 13px;
+  font-family: 'Trade Winds', cursive;
+  text-shadow: .5px .5px 1px white;
+}
+#weatherType{
+  font-size: 45px;
+  font-style: italic;
+  font-family: 'Cabin Sketch', cursive;
+  text-shadow: .5px .5px 1px white;
+}

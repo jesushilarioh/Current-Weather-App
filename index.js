@@ -31,7 +31,7 @@
                 C2FButton = document.getElementById("CtoF"),
                 condition = weatherData.weather,
                 temp = weatherData.main.temp,
-                wind = weatherData.wind.speed,
+                wind = (weatherData.wind.speed * 2.237).toFixed(1),
                 temp1 = ((temp - 273) * (9 / 5) + 32).toFixed(1),
                 temp2 = (temp - 273.15).toFixed(1);
             var tempChange = document.getElementsByClassName('fahrenheit');

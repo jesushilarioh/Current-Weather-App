@@ -1,21 +1,22 @@
 $(document).ready(function() {
-    var lat;
-    var long;
+
     $.getJSON("http://ip-api.com/json", function(data2) {
+        let lat;
+        let long;
         lat = data2.lat;
         long = data2.lon;
-        var api = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=f62651bb11bb663233a4e55634a22266';
+        let api = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=f62651bb11bb663233a4e55634a22266';
 
         $.getJSON(api, function(data) {
-            var fTemp;
-            var cTemp;
-            var kTemp;
-            var tempSwap = true;
+            let fTemp;
+            let cTemp;
+            let kTemp;
+            let tempSwap = true;
             //JSON call for Open Weather api
-            var weatherType = data.weather[0].description;
+            let weatherType = data.weather[0].description;
             kTemp = data.main.temp;
-            var windSpeed = data.wind.speed;
-            var city = data.name;
+            let windSpeed = data.wind.speed;
+            let city = data.name;
 
             // Temp in Kelvin
             fTemp = (kTemp * (9 / 5) - 459.67).toFixed(1);

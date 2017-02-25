@@ -36,6 +36,7 @@
                 temp2 = (temp - 273.15).toFixed(1);
             var tempChange = document.getElementsByClassName('fahrenheit');
 
+
             // Display info onto index.html
             renderHTML(conditionContainer, condition);
             renderHTML(conditionDesContainer, condition);
@@ -56,7 +57,46 @@
                 }
             });
 
+
+            console.log(condition[0].icon);
+
         };
+
+
+        /*switch (expression) {
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            case expression:
+
+                break;
+            default:
+
+        } */
 
         // Send GET request to open weather map
         request.send();
@@ -87,6 +127,7 @@
                     info.innerHTML += data[i].description + " ";
                 }
                 break;
+
                 // write to element with #temp id
             case tempContainer:
                 info.innerHTML = htmlString + " F";

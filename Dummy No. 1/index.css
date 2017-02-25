@@ -23,6 +23,9 @@ body{
   text-shadow:  2px 3px 8px black;
   font-family: 'Grand Hotel', cursive;
 }
+#fTemp:visited {
+    display: none;
+}
 #windSpeed{
   font-size: 45px;
   margin: 13px;

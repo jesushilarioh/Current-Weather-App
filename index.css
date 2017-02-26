@@ -1,4 +1,11 @@
 body {
     background-color: rgb(43, 43, 45);
     color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+h3, h1 {
+    text-shadow: 1px 2px 2px black;
 }

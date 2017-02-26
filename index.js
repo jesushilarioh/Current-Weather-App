@@ -57,46 +57,10 @@
                 }
             });
 
-
-            console.log(condition[0].icon);
+            // Change background image according to weather icon
+            backgroundImage(condition[0].icon);
 
         };
-
-
-        /*switch (expression) {
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            case expression:
-
-                break;
-            default:
-
-        } */
 
         // Send GET request to open weather map
         request.send();
@@ -157,6 +121,80 @@
             default:
                 document.write("I'm sorry, an error has occured.");
                 break;
+        }
+    }
+
+    function backgroundImage(data) {
+
+        let backgroundImg = document.body;
+
+        switch (data) {
+
+            case "01d" || "01n": // clear sky
+                if ("01d") {
+                    backgroundImg.style.backgroundImage = "url('clearSkyDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('clearSkyNight1.jpg')";
+                }
+                break;
+            case "02d" || "02n": // few clouds
+                if ("02d") {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                }
+                break;
+            case "03d" || "03n": // scattered clouds
+                if ("03d") {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                }
+                break;
+            case "04d" || "04n": // broken clouds
+                if ("04d") {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                }
+                break;
+            case "09d" || "09n": // shower rain
+                if ("09d") {
+                    backgroundImg.style.backgroundImage = "url('rainDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('rainNight.jpg')";
+                }
+                break;
+            case "10d" || "10n": // rain
+                if ("10d") {
+                    backgroundImg.style.backgroundImage = "url('rainDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('rainNight.jpg')";
+                }
+                break;
+            case "11d" || "11n": // thunderstorm
+                if ("11d") {
+                    backgroundImg.style.backgroundImage = "url('rainDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('rainNight.jpg')";
+                }
+                break;
+            case "13d" || "13n": // snow
+                if ("13d") {
+                    backgroundImg.style.backgroundImage = "url('snowDay1.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('snowNight1.jpg')";
+                }
+                break;
+            case "50d" || "50n": // mist
+                if ("50d") {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                } else {
+                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                }
+                break;
+            default:
+                backgroundImg.style.backgroundImage = "";
         }
     }
 }());

@@ -40,11 +40,11 @@ $(document).ready(function() {
             $("#windSpeed").html("Wind Speed " + windSpeed + " mph");
             if (fTemp > 80) {
                 $('body').css('background-image', 'url(one.jpg)');
-            } else if (fTemp > 70) {
+            } else if (fTemp > 56) {
                 $('body').css('background-image', 'url(two.jpg)');
-            } else if (fTemp > 60) {
+            } else if (fTemp > 40) {
                 $('body').css('background-image', 'url(three.jpg)');
-            } else if (fTemp > 50) {
+            } else if (fTemp > 20) {
                 $('body').css('background-image', 'url(four.jpg)');
             }
         });

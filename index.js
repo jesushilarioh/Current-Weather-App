@@ -56,6 +56,7 @@
                 }
             });
 
+            console.log(condition[0].icon);
             // Change background image according to weather icon
             backgroundImage(condition[0].icon);
         };
@@ -124,11 +125,11 @@
     // backgroundImage function used to add a background image according to weather icon
     function backgroundImage(data) {
         // Local Variable
-        const backgroundImg = document.body;
+        let backgroundImg = document.body;
 
         switch (data) {
             // clear sky
-            case (data === "01d" || "01n"):
+            case ("01d" || "01n"):
                 if (data === "01d") {
                     backgroundImg.style.backgroundImage = "url('Images/clearSkyDay.jpg')";
                 } else {
@@ -136,64 +137,64 @@
                 }
                 break;
                 // few clouds
-            case (data === "02d" || "02n"):
-                if ("02d") {
+            case ("02d" || "02n"):
+                if (data === "02d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
                 // scattered clouds
-            case (data === "03d" || "03n"):
-                if ("03d") {
+            case ("03d" || "03n"):
+                if (data === "03d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
                 // broken clouds
-            case (data === "04d" || "04n"):
-                if ("04d") {
+            case ("04d" || "04n"):
+                if (data === "04d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
                 // shower rain
-            case (data === "09d" || "09n"):
-                if ("09d") {
+            case ("09d" || "09n"):
+                if (data === "09d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
                 // rain
-            case (data === "10d" || "10n"):
-                if ("10d") {
+            case ("10d" || "10n"):
+                if (data === "10d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
                 // thunderstorm
-            case (data === "11d" || "11n"):
-                if ("11d") {
+            case ("11d" || "11n"):
+                if (data === "11d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
                 // snow
-            case (data === "13d" || "13n"):
-                if ("13d") {
+            case ("13d" || "13n"):
+                if (data === "13d") {
                     backgroundImg.style.backgroundImage = "url('Images/snowDay1.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/snowNight1.jpg')";
                 }
                 break;
                 // mist
-            case (data === "50d" || "50n"):
-                if ("50d") {
+            case ("50d" || "50n"):
+                if (data === "50d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";

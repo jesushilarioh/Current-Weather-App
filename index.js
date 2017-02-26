@@ -36,7 +36,6 @@
                 temp2 = (temp - 273.15).toFixed(1);
             var tempChange = document.getElementsByClassName('fahrenheit');
 
-
             // Display info onto index.html
             renderHTML(conditionContainer, condition);
             renderHTML(conditionDesContainer, condition);
@@ -57,10 +56,8 @@
                 }
             });
 
-            console.log(condition[0].icon);
             // Change background image according to weather icon
             backgroundImage(condition[0].icon);
-
         };
 
         // Send GET request to open weather map
@@ -74,7 +71,7 @@
     // Send GET request to ip-api
     request.send();
 
-    // renderHTML function called in lines 34 - 36;
+    // renderHTML function used to display info to html page
     function renderHTML(info, data) {
         let htmlString = "";
         htmlString += data;
@@ -92,7 +89,6 @@
                     info.innerHTML += data[i].description + " ";
                 }
                 break;
-
                 // write to element with #temp id
             case tempContainer:
                 info.innerHTML = htmlString + " F";
@@ -125,77 +121,89 @@
         }
     }
 
+    // backgroundImage function used to add a background image according to weather icon
     function backgroundImage(data) {
-
-        let backgroundImg = document.body;
+        // Local Variable
+        const backgroundImg = document.body;
 
         switch (data) {
-            case (data === "01d" || "01n"): // clear sky
+            // clear sky
+            case (data === "01d" || "01n"):
                 if (data === "01d") {
                     backgroundImg.style.backgroundImage = "url('Images/clearSkyDay.jpg')";
-                } else{
+                } else {
                     backgroundImg.style.backgroundImage = "url('Images/clearSkyNight1.jpg')";
                 }
                 break;
-            case (data === "02d" || "02n"): // few clouds
+                // few clouds
+            case (data === "02d" || "02n"):
                 if ("02d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
-            case (data === "03d" || "03n"): // scattered clouds
+                // scattered clouds
+            case (data === "03d" || "03n"):
                 if ("03d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
-            case (data === "04d" || "04n"): // broken clouds
+                // broken clouds
+            case (data === "04d" || "04n"):
                 if ("04d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
-            case (data === "09d" || "09n"): // shower rain
+                // shower rain
+            case (data === "09d" || "09n"):
                 if ("09d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
-            case (data === "10d" || "10n"): // rain
+                // rain
+            case (data === "10d" || "10n"):
                 if ("10d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
-            case (data === "11d" || "11n"): // thunderstorm
+                // thunderstorm
+            case (data === "11d" || "11n"):
                 if ("11d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
-            case (data === "13d" || "13n"): // snow
+                // snow
+            case (data === "13d" || "13n"):
                 if ("13d") {
                     backgroundImg.style.backgroundImage = "url('Images/snowDay1.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/snowNight1.jpg')";
                 }
                 break;
-            case (data === "50d" || "50n"): // mist
+                // mist
+            case (data === "50d" || "50n"):
                 if ("50d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
+                // No image
             default:
                 backgroundImg.style.backgroundImage = "";
         }
     }
 }());
 // http://api.openweathermap.org/data/2.5/weather?lat=27.7693&lon=-97.444&APPID=f62651bb11bb663233a4e55634a22266
+// please use your own API!

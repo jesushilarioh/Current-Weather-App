@@ -57,6 +57,7 @@
                 }
             });
 
+            console.log(condition[0].icon);
             // Change background image according to weather icon
             backgroundImage(condition[0].icon);
 
@@ -129,68 +130,67 @@
         let backgroundImg = document.body;
 
         switch (data) {
-
-            case "01d" || "01n": // clear sky
-                if ("01d") {
-                    backgroundImg.style.backgroundImage = "url('clearSkyDay.jpg')";
-                } else {
-                    backgroundImg.style.backgroundImage = "url('clearSkyNight1.jpg')";
+            case (data === "01d" || "01n"): // clear sky
+                if (data === "01d") {
+                    backgroundImg.style.backgroundImage = "url('Images/clearSkyDay.jpg')";
+                } else{
+                    backgroundImg.style.backgroundImage = "url('Images/clearSkyNight1.jpg')";
                 }
                 break;
-            case "02d" || "02n": // few clouds
+            case (data === "02d" || "02n"): // few clouds
                 if ("02d") {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
-            case "03d" || "03n": // scattered clouds
+            case (data === "03d" || "03n"): // scattered clouds
                 if ("03d") {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
-            case "04d" || "04n": // broken clouds
+            case (data === "04d" || "04n"): // broken clouds
                 if ("04d") {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
-            case "09d" || "09n": // shower rain
+            case (data === "09d" || "09n"): // shower rain
                 if ("09d") {
-                    backgroundImg.style.backgroundImage = "url('rainDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('rainNight.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
-            case "10d" || "10n": // rain
+            case (data === "10d" || "10n"): // rain
                 if ("10d") {
-                    backgroundImg.style.backgroundImage = "url('rainDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('rainNight.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
-            case "11d" || "11n": // thunderstorm
+            case (data === "11d" || "11n"): // thunderstorm
                 if ("11d") {
-                    backgroundImg.style.backgroundImage = "url('rainDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('rainNight.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/rainNight.jpg')";
                 }
                 break;
-            case "13d" || "13n": // snow
+            case (data === "13d" || "13n"): // snow
                 if ("13d") {
-                    backgroundImg.style.backgroundImage = "url('snowDay1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/snowDay1.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('snowNight1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/snowNight1.jpg')";
                 }
                 break;
-            case "50d" || "50n": // mist
+            case (data === "50d" || "50n"): // mist
                 if ("50d") {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('fewCloudsNight1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
                 }
                 break;
             default:

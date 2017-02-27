@@ -129,7 +129,8 @@
 
         switch (data) {
             // clear sky
-            case ("01d" || "01n"):
+            case "01d":
+            case "01n":
                 if (data === "01d") {
                     backgroundImg.style.backgroundImage = "url('Images/clearSkyDay.jpg')";
                 } else {
@@ -137,7 +138,8 @@
                 }
                 break;
                 // few clouds
-            case ("02d" || "02n"):
+            case "02d":
+            case "02n":
                 if (data === "02d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
@@ -145,7 +147,8 @@
                 }
                 break;
                 // scattered clouds
-            case ("03d" || "03n"):
+            case "03d":
+            case "03n":
                 if (data === "03d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
@@ -153,7 +156,8 @@
                 }
                 break;
                 // broken clouds
-            case ("04d" || "04n"):
+            case "04d":
+            case "04n":
                 if (data === "04d") {
                     backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
                 } else {
@@ -161,7 +165,8 @@
                 }
                 break;
                 // shower rain
-            case ("09d" || "09n"):
+            case "09d":
+            case "09n":
                 if (data === "09d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
@@ -169,7 +174,8 @@
                 }
                 break;
                 // rain
-            case ("10d" || "10n"):
+            case "10d":
+            case "10n":
                 if (data === "10d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
@@ -177,7 +183,8 @@
                 }
                 break;
                 // thunderstorm
-            case ("11d" || "11n"):
+            case "11d":
+            case "11n":
                 if (data === "11d") {
                     backgroundImg.style.backgroundImage = "url('Images/rainDay.jpg')";
                 } else {
@@ -185,7 +192,8 @@
                 }
                 break;
                 // snow
-            case ("13d" || "13n"):
+            case "13d":
+            case "13n":
                 if (data === "13d") {
                     backgroundImg.style.backgroundImage = "url('Images/snowDay1.jpg')";
                 } else {
@@ -193,11 +201,12 @@
                 }
                 break;
                 // mist
-            case ("50d" || "50n"):
+            case "50d":
+            case "50n":
                 if (data === "50d") {
-                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsDay.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/mistDay.jpg')";
                 } else {
-                    backgroundImg.style.backgroundImage = "url('Images/fewCloudsNight1.jpg')";
+                    backgroundImg.style.backgroundImage = "url('Images/mistyNight.jpg')";
                 }
                 break;
                 // No image

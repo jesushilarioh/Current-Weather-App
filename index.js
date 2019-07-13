@@ -22,7 +22,7 @@
             country = ourData.country;
 
         // GET request from open weather map
-        request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=f62651bb11bb663233a4e55634a22266');
+        request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=<-- API KEY HERE -->');
 
         // Function to load on initial page load
         request.onload = function() {

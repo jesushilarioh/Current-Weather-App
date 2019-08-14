@@ -1,0 +1,27 @@
+{
+  "name": "open-weather-map-api",
+  "version": "1.0.0",
+  "description": "Currect weather app using Open Weather Map API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesushilarioh/Open-Weather-Map-API.git"
+  },
+  "keywords": [
+    "weather api",
+    "current weather api",
+    "open weather api",
+    "current weather",
+    "weather"
+  ],
+  "author": "Jesus Hilario H.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jesushilarioh/Open-Weather-Map-API/issues"
+  },
+  "homepage": "https://github.com/jesushilarioh/Open-Weather-Map-API#readme",
+  "dependencies": {}
+}

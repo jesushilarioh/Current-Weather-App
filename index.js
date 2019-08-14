@@ -6,10 +6,29 @@ if ("geolocation" in navigator || navigator.geolocation) {
 }
     
 function success(position) {
-    longitude = position.coords.longitude;
-    latitude  = position.coords.latitude;
-    console.log("In function, Latitude: " + latitude + ", Longitude: " + longitude);
+    let longitude = position.coords.longitude,
+        latitude  = position.coords.latitude;
+        // params = 'longitude=' + longitude + '&latitude=' + latitude;
 
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', './connection/location.php?latitude=' + latitude + '&longitude=' + longitude, true);
+    xhr.onloadstart = function() {
+        console.log('xhr started');
+    }
+    xhr.onerror = function() {
+        console.log('xhr onerror');
+    }
+    xhr.onload = function() {
+        if (this.status == 200) {
+            let results = JSON.parse(this.responseText);
+            console.log(results);
+        }
+    }
+    xhr.onloadend = function() {
+        console.log('xhr ended');
+    }
+    xhr.send();
 }
 
 function error(e) {
